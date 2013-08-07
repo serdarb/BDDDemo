@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using TechTalk.SpecFlow;
-
-namespace Specs
+﻿namespace Specs
 {
     using NUnit.Framework;
+    using TechTalk.SpecFlow;
 
     using SuperBowlingScorer;
 
     [Binding]
-    public class ScoringSteps {
+    public class ScoringSteps
+    {
         private SuperScorer _scorer;
         [Given(@"I am on the first frame")]
         public void GivenIAmOnTheFirstFrame()
@@ -27,10 +23,16 @@ namespace Specs
         }
 
         [Then(@"I should see an ""(.*)"" and a message that says ""(.*)""")]
-        public void ThenIShouldSeeAnAndAMessageThatSays(string p0, string p1)
+        public void ThenIShouldSeeAnAndAMessageThatSays(string score, string message)
         {
-            Assert.AreEqual("Good job!",_scorer.BowlerMessage);
-            Assert.AreEqual("X", _scorer.Score);
+            Assert.AreEqual(score, _scorer.Score);
+            Assert.AreEqual(message, _scorer.BowlerMessage);
+        }
+
+        [When(@"I bowl a gutter ball")]
+        public void WhenIBowlAGutterBall()
+        {
+            _scorer.ScoreFirtsBall(0);
         }
     }
 }

@@ -24,6 +24,12 @@
                 Score = "X";
                 BowlerMessage = "Good job!";
             }
+
+            if (pinsKnockedDown == 0)
+            {
+                Score = "0";
+                BowlerMessage = "You will do better next time!";
+            }
         }
     }
 }
